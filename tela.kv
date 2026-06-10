@@ -1,0 +1,64 @@
+#:kivy 2.3.1
+<MyWidget>
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+        MDLabel:
+            text: "Cliente Modbus TCP"
+            halign: "center"
+
+        MDTextField:
+            id: ip
+            hint_text: "IP do servidor"
+            text: "localhost"
+
+        MDTextField:
+            id: porta
+            hint_text: "Porta"
+            text: "502"
+
+        MDRaisedButton:
+            text: "Conectar"
+            on_release: app.conectar()
+
+        MDTextField:
+            id: endereco
+            hint_text: "Endereço Modbus"
+
+        MDTextField:
+            id: valor
+            hint_text: "Valor"
+
+        MDTextField:
+            id: bit
+            hint_text: "Bit (se necessário)"
+
+        Spinner:
+            id: tipo
+            text: "holding"
+            values: ("holding", "coil", "float", "bit", "bits")
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: "50dp"
+
+            MDCheckbox:
+                id: recorrente
+
+            MDLabel:
+                text: "Leitura recorrente"
+
+        MDRaisedButton:
+            text: "Ler"
+            on_release: app.ler()
+
+        MDRaisedButton:
+            text: "Escrever"
+            on_release: app.escrever()
+
+        MDLabel:
+            id: resultado
+            text: "Resultado:"
+            halign: "center"
